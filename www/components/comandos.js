@@ -1,33 +1,38 @@
-// This is a JavaScript file
+//Código para exibir o mapa
 
- $(document).on("click","#ir",function(){
-   L.mapquest.key = 'KEY';
-var baseLayer = L.mapquest.tileLayer('dark');
+  window.onload = function(){
 
-L.mapquest.geocoding().geocode(['New York, NY'], showMap);
+    //configurando plugin de notificações
+  document.addEventListener("deviceready", onDeviceReady, false);
+  function onDeviceReady() {
+      console.log(navigator.notification);
+  }
 
-function showMap(err, data) {
-  var map = createMap();
-  map.addControl(L.mapquest.control());
-  addLayerControl(map);
-}
+  //configurando plugin de geolocalização
+  document.addEventListener("deviceready", onDeviceReady, false);
+  function onDeviceReady() {
+    console.log("navigator.geolocation works well");
+  }
 
-function createMap() {
-  var map = L.mapquest.map('map', {
-    center: [40.7237, -73.9825],
-    zoom: 14,
-    layers: baseLayer
-  });
-  return map;
-}
+    var onSuccess = function(position) {
 
-function addLayerControl(map) {
-  L.control.layers({
-    'Map': L.mapquest.tileLayer('map'),
-    'Satellite': L.mapquest.tileLayer('satellite'),
-    'Hybrid': L.mapquest.tileLayer('hybrid'),
-    'Light': L.mapquest.tileLayer('light'),
-    'Dark': baseLayer
-  }, {}, { position: 'topleft'}).addTo(map);
-}
- });
+      L.mapquest.key = 'VuATH4WRuwVc1ZJUa2GyU3oOaDiljlOr';
+
+      var map = L.mapquest.map('map', {
+      center: [position.coords.latitude, position.coords.longitude],//Configurando coordenadas recebidas pelo gps
+      layers: L.mapquest.tileLayer('map'),
+      zoom: 12
+      });
+
+      map.addControl(L.mapquest.control());
+    };
+
+    //função de erro
+    function onError(error){
+      navigator.notification.alert('code: '    + error.code    + '\n' +
+                                  'message: ' + error.message + '\n');
+    }
+
+    //Pegando coordenadas atuais
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }
