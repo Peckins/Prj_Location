@@ -30,7 +30,7 @@
     //função de erro
     function onError(error){
       navigator.notification.alert('code: '    + error.code    + '\n' +
-                                  'message: ' + error.message + '\n');
+                                   'message: ' + error.message + '\n');
     }
 
     //Pegando coordenadas atuais
