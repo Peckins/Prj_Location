@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -10,7 +10,12 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <scrpit src="components/jquery.min.js"></scrpit>
+  <script src="components/jquery.min.js"></script>
+  <script src="components/bootstrap.min.js"></script>
+  <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+
+  <script src="components/comandos.js"></script><!--Funções da página-->
 
 </head>
 <body>
@@ -33,7 +38,11 @@
           <br>
           <p>Mostrar localização atual atravéz da conexão com a internet em conjunto com o gps.</p><!--Descrição-->
           <br>
+
           <button class="btn btn-success btn-block" id="ir">Ir</button>
+
+          <button class="btn btn-success" data-toggle="modal" data-target="#mapa">Ir</a>
+
         </div>
 
       </div>
@@ -41,5 +50,28 @@
     
   </div>
   <!--Fim do corpo-->
+
+  <!--Janela com o mapa-->
+  <div id="mapa" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Localização</h4>
+        </div>
+
+        <div class="modal-body">
+
+          <div id="map"></div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+
+      </div>      
+    </div>
+  </div>
 </body>
 </html>

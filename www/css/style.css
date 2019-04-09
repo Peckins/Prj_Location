@@ -1,4 +1,5 @@
 
+
 .jumbotron{
     background-color:  transparent;
 
@@ -26,3 +27,15 @@ h3{
 button{
   
 }
+=======
+/* definindo o tamanho do mapa */
+#map{
+  width: 100%;
+  height: 400px;
+}
+svg{
+  width: 100%;
+  height: 100%;
+}
+
+
